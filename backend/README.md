@@ -1,0 +1,1 @@
+This project uses an API built by Adrian Padua. His website can be found [here](http://www.dnd5eapi.co/) and the GitHub repository for the API can be found [here](https://github.com/adrpadua/5e-database).
