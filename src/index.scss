@@ -1,1 +1,23 @@
+html {
+  box-sizing: border-box;
+}
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 50px 20px;
+  width: 100%;
+}

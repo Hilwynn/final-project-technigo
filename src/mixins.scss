@@ -1,0 +1,6 @@
+@mixin linkStyling($borders, $color) {
+  border-width: $borders;
+  border-style: solid;
+  border-color: $color;
+  padding: 3px 0;
+}
