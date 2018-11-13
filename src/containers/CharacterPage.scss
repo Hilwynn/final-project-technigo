@@ -1,0 +1,55 @@
+.information-section,
+.graphs-section {
+  display: flex;
+  width: 100%;
+}
+
+.character-basics {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  
+  .character-name {
+    width: 100%
+  }
+  
+  .character-class,
+  .character-background {
+    width: 50%;
+  }
+  
+  .character-race,
+  .character-alignment {
+    width: 37.5%;
+  }
+  
+  .character-xp {
+    width: 25%;
+  }
+  
+  p {
+    margin: 10px 0 0;
+  }
+  
+  .character-label {
+    border-top: 1px solid #000;
+    
+    h3 {
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+  }
+}
+
+.graph-gold,
+.graph-xp {
+  width: 50%;
+}
+
+.party-container {
+  display: flex;
+  
+  img {
+    margin: 0 0 10px 10px;
+  }
+}
