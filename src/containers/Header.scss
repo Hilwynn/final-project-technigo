@@ -1,0 +1,27 @@
+@import "../mixins.scss";
+
+.navbar {
+  background-color: red;
+  height: auto;
+  padding: 20px;
+  width: 100%;
+  
+  ul {
+    display: flex;
+    list-style: none;
+    padding-inline-start: 0;
+    justify-content: space-around;
+    
+    a {
+      color: white;
+      
+      &:hover {
+        @include linkStyling(0 0 1.5px 0, white)
+      }
+      
+      &:focus {
+        @include linkStyling(1.5px 0, white)
+      }
+    }
+  }
+}
