@@ -1,7 +1,9 @@
+@import "../colors.scss";
 @import "../mixins.scss";
 
+
 .navbar {
-  background-color: red;
+  background-color: $red;
   height: auto;
   padding: 20px;
   width: 100%;

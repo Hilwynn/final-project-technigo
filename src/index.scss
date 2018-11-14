@@ -1,3 +1,7 @@
+@import "./colors.scss";
+@import "./fonts.scss";
+@import "./mixins.scss";
+
 html {
   box-sizing: border-box;
 }
@@ -12,7 +16,32 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: $body-font;
+}
+
+a {
+  color: $red;
+  cursor: pointer;
+  font-family: $heading-font;
+  outline: none;
+  text-decoration: none;
+  
+  &:hover {
+    @include linkStyling(0 0 1.5px 0, $red)
+  }
+  
+  &:focus {
+    @include linkStyling(1.5px 0, $red)
+  }
+}
+
+h1, h2 {
+  font-family: $heading-font;
+  font-weight: 400;
+}
+
+p {
+  font-family: $body-font;
 }
 
 .wrapper {
