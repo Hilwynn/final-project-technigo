@@ -1,7 +1,8 @@
 import React, { Component } from "react"
-import "./CharacterPage.scss"
+import ProfileMenu from "../components/ProfileMenu"
+import "./UserCharacterPage.scss"
 
-class CharacterPage extends Component {
+class UserCharacterPage extends Component {
   state = {
     character: null
   }
@@ -20,11 +21,15 @@ class CharacterPage extends Component {
     const { character } = this.state
     
     if (character) {
+      console.log(this.state.character)
+      console.log(character.party)
 
       return (
         <main className="wrapper">
         
-          <div className="character-hero" />
+          <div className="profile-hero">
+            <ProfileMenu />
+          </div>
         
           <div className="inner-wrapper">
           
@@ -148,4 +153,4 @@ class CharacterPage extends Component {
   }
 }
 
-export default CharacterPage
+export default UserCharacterPage

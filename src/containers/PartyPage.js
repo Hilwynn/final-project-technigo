@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./CharacterPage.scss"
 
-class CharacterPage extends Component {
+class PartyPage extends Component {
   state = {
     character: null
   }
@@ -148,4 +148,4 @@ class CharacterPage extends Component {
   }
 }
 
-export default CharacterPage
+export default PartyPage

@@ -2,9 +2,11 @@
 @import "../mixins.scss";
 
 
-.navbar {
-  background-color: $red;
+.profile-navbar {
+  background-color: transparent;
   height: auto;
+  margin: 0 auto;
+  max-width: 600px;
   padding: 5px 20px;
   width: 100%;
   
@@ -15,18 +17,18 @@
     justify-content: space-around;
     
     a {
-      color: white;
+      color: $red;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
       
       &:hover {
-        @include linkStyling(1.5px 0, white)
+        @include linkStyling(1.5px 0, $red)
       }
       
       &:focus {
-        @include linkStyling(1.5px 0, white)
+        @include linkStyling(1.5px 0, $red)
       }
     }
   }

@@ -3,16 +3,9 @@ import { Link } from "react-router-dom"
 import "./Header.scss"
 
 class Header extends Component {
-  state = {
-    authorized: false
-  }
-  
-  logOutUser = () => {
-    console.log("Logging out user")
-  }
   
   render() {
-    const { authorized } = this.state
+    const { authorized, logoutUser } = this.props
     
     return (
       <nav className="navbar">
@@ -21,7 +14,10 @@ class Header extends Component {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/character">Character</Link>
+          <Link to="/characters">Characters</Link>
+        </li>
+        <li>
+          <Link to="/parties">Parties</Link>
         </li>
         {authorized ? (
           <li>
@@ -35,8 +31,8 @@ class Header extends Component {
         {authorized ? (
           <li>
             <a
-              onClick={this.logoutUser}
-              onKeyPress={this.logoutUser}
+              onClick={logoutUser}
+              onKeyPress={logoutUser}
               role="link"
               tabIndex={0}>
                 Log Out

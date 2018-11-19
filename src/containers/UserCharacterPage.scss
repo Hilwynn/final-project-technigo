@@ -1,0 +1,80 @@
+@import "../colors.scss";
+
+.info-line {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+
+.information-section,
+.graphs-section {
+  display: flex;
+  height: auto;
+  width: 100%;
+}
+
+.information-section {
+  padding-top: 30px;
+  
+  img {
+    border: 1px solid $gray;
+    display: block;
+    height: 200px;
+    width: 200px;
+  }
+}
+
+.character-basics {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  margin-left: 20px;
+  width: 100%;
+  
+  .character-name {
+    width: 100%
+  }
+  
+  .character-class,
+  .character-background {
+    width: 50%;
+  }
+  
+  .character-race,
+  .character-alignment {
+    width: 37.5%;
+  }
+  
+  .character-xp {
+    width: 25%;
+  }
+  
+  p {
+    line-height: 20px;
+    margin: 10px 0 0;
+  }
+  
+  .character-label {
+    border-top: 1px solid $gray;
+    
+    h3 {
+      font-size: 12px;
+      margin: 5px 0 0;
+    }
+  }
+}
+
+.graph-gold,
+.graph-xp {
+  width: 50%;
+}
+
+.party-container {
+  display: flex;
+  
+  img {
+    margin: 0 0 10px 10px;
+  }
+}

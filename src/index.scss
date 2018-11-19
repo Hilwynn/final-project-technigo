@@ -1,5 +1,7 @@
 @import "./colors.scss";
 @import "./fonts.scss";
+@import "./form.scss";
+@import "./heroes.scss";
 @import "./mixins.scss";
 
 html {
@@ -14,15 +16,17 @@ html {
 
 body {
   color: #000;
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: $body-font;
+  font-family: $main-font;
 }
 
 a {
   color: $red;
   cursor: pointer;
-  font-family: $heading-font;
+  font-family: $main-font;
+  line-height: 20px;
   outline: none;
   text-decoration: none;
   
@@ -31,22 +35,37 @@ a {
   }
   
   &:focus {
-    @include linkStyling(1.5px 0, $red)
+    @include linkStyling(0 0 1.5px 0, $red)
   }
 }
 
 h1, h2 {
-  font-family: $heading-font;
-  font-weight: 400;
+  font-family: $main-font;
+  font-weight: 700;
+  text-transform: uppercase;  
+}
+
+h1 {
+  font-size: 46px;
+  line-height: 48px;
+}
+
+h2 {
+  font-size: 34px;
+  line-height: 30px;
 }
 
 p {
-  font-family: $body-font;
+  line-height: 20px;
 }
 
 .wrapper {
   margin: 0 auto;
-  max-width: 900px;
-  padding: 50px 20px;
+  max-width: 1200px;
+  padding: 0 0 50px;
   width: 100%;
+}
+
+.inner-wrapper {
+  padding: 0 20px;
 }

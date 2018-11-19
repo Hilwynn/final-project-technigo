@@ -1,0 +1,10 @@
+.user-characters-container {
+  display: flex;
+  margin-top: 30px;
+  
+  .character-widget-container {
+    height: auto;
+    margin: 10px 10px 0 0;
+    width: calc(20% - 10px);
+  }
+}

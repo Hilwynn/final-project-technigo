@@ -1,0 +1,26 @@
+@import "../colors.scss";
+
+.character-widget-container {
+  border: 1px solid $gray;
+  position: relative;
+  
+  .character-widget-image {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .character-widget-label {
+    bottom: -7px;
+    right: 10px;
+    position: absolute;
+  }
+}
+
+.text-padding {
+  background-color: rgba(0, 0, 0, .6);
+  box-decoration-break: clone;
+  color: #fff;
+  display: inline;
+  padding: 5px 7px;
+}
