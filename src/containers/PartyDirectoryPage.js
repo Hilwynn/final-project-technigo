@@ -10,7 +10,6 @@ class PartyDirectoryPage extends Component {
     fetch(`http://localhost:8081/parties`)
     .then(response => response.json())
     .then(json => {
-      console.log("JSON from the server!", json)
       this.setState({
         parties: json
       })
@@ -35,12 +34,13 @@ class PartyDirectoryPage extends Component {
           <h1>Parties</h1>
           
             <div className="all-characters-container">
-              {parties.map(character => (
+              {parties.map(party => (
                 <CharacterWidget
-                  id={character._id}
-                  name={character.name}
+                  id={party._id}
+                  key={party._id}
+                  name={party.name}
                   path="characters/"
-                  portrait={character.portrait} />
+                  portrait={party.portrait} />
                     ))}
             </div>
           

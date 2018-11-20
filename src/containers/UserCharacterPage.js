@@ -1,10 +1,14 @@
 import React, { Component } from "react"
 import ProfileMenu from "../components/ProfileMenu"
+import CharacterWidget from "../components/CharacterWidget"
+import JoinPartyForm from "../components/JoinPartyForm"
 import "./UserCharacterPage.scss"
 
 class UserCharacterPage extends Component {
   state = {
-    character: null
+    character: null,
+    party: null,
+    partyId: null
   }
   
   componentDidMount() {
@@ -13,16 +17,31 @@ class UserCharacterPage extends Component {
     fetch(`http://localhost:8081/characters/${characterId}`)
       .then(response => response.json())
       .then(json => {
-        this.setState({ character: json })
-      })
+        if (json.party) {
+          this.setState({
+            partyId: json.party._id
+          }, () => {
+            const { partyId } = this.state
+            fetch(`http://localhost:8081/parties/${partyId}`)
+              .then(response => response.json())
+              .then(json => {
+                console.log(json)
+                this.setState({
+                  party: json
+                })
+              })
+          })
+        }
+        this.setState({
+          character: json
+        })
+      })      
   }
 
   render() {
-    const { character } = this.state
+    const { character, party } = this.state
     
     if (character) {
-      console.log(this.state.character)
-      console.log(character.party)
 
       return (
         <main className="wrapper">
@@ -103,13 +122,11 @@ class UserCharacterPage extends Component {
               <h2>Spells</h2>
               
               <input type="text" placeholder="Search your spells" />
-              <input type="text" placeholder="Add spells" />
-              
-              
+              <input type="text" placeholder="Add spells" />  
             
             </section>
             
-            <section className="graphs-section">
+            {/*<section className="graphs-section">
             
               <div className="graph-xp">
                 <h2>Experience</h2>
@@ -121,20 +138,32 @@ class UserCharacterPage extends Component {
                 {character.gold}
               </div>
               
-            </section>
-            
-            Add ternery operator - show this section of party is available, otherwise show something like "Join your party"
+            </section>*/}
             
             <section className="party-section">
-              <h2>Adventuring Party (components)</h2>
+              <h2>Adventuring Party</h2>
+              
+              {party ?
+                (
+                  <div className="party-wrapper">
+                    <h3>{party.name}</h3>
+                    <div className="party-container">
+                      {party.members.filter(character => character._id !== this.state.character._id).map(character => (
+                        <CharacterWidget
+                          id={character._id}
+                          key={character._id}
+                          name={character.name}
+                          path="characters/"
+                          portrait={character.portrait} />
+                      ))}
+                    </div>
+                  </div>
+                )
+                : 
+                <JoinPartyForm />
+              }
               
               
-              <div className="party-container">
-                <img src="https://picsum.photos/80" alt="PARTY MEMBER NAME" />
-                <img src="https://picsum.photos/80" alt="PARTY MEMBER NAME" />
-                <img src="https://picsum.photos/80" alt="PARTY MEMBER NAME" />
-                <img src="https://picsum.photos/80" alt="PARTY MEMBER NAME" />
-              </div>
               
             </section>
           

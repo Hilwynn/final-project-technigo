@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { withRouter } from "react-router-dom"
 import ProfileMenu from "../components/ProfileMenu"
 
 class CharacterCreationPage extends Component {
@@ -21,7 +20,8 @@ class CharacterCreationPage extends Component {
     })
   }
   
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     const url = "http://localhost:8081/characters"
     fetch(url, {
       method: "POST",

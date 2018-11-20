@@ -1,6 +1,6 @@
 .character-hero {
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url("./images/character-hero.jpg");
-  background-position: 0 70%;
+  background-position: 0 25%;
   background-repeat: no-repeat;
   background-size: cover;
   height: 50vh;
@@ -19,14 +19,14 @@
   width: 100%;
 }
 
-// .party-hero {
-//   align-items: flex-end;
-//   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url("./images/profile-party.jpg");
-//   background-position: 0 75%;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   display: flex;
-//   height: 50vh;
-//   position: relative;
-//   width: 100%;
-// }
+.party-hero {
+  align-items: flex-end;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)), url("./images/party-hero.jpg");
+  background-position: 0 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 50vh;
+  position: relative;
+  width: 100%;
+}

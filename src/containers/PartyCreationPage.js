@@ -1,10 +1,9 @@
 import React, { Component } from "react"
+import ProfileMenu from "../components/ProfileMenu"
 
 class PartyCreationPage extends Component {
   state = {
-    username: "",
-    email: "",
-    password: ""
+    name: ""
   }
 
   handleChange = event => {
@@ -13,54 +12,54 @@ class PartyCreationPage extends Component {
     })
   }
 
-  handleSubmit = event => {
-    event.preventDefault()
-    this.props.registerUser(this.state)
+  handleSubmit = () => {
+    const url = "http://localhost:8081/parties"
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json",
+        "accessToken": localStorage.getItem("token")
+      }
+    })
+      .then(response => response.json())
+      .catch(err => {
+        console.log("Failed to create user", err)
+      })
   }
 
   render() {
-    const { username, email, password } = this.state
+    const { name } = this.state
     return (
       <div className="wrapper">
-        <h1>Create New Party</h1>
+      
+        <div className="profile-hero">
+          <ProfileMenu />
+        </div>
+      
+        <div className="inner-wrapper">
+      
+          <h1>Create New Party</h1>
 
-        <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
 
-          <div className="input-box">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              name="username"
-              onChange={this.handleChange}
-              type="text"
-              value={username} />
-          </div>
+            <div className="input-box">
+              <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                name="name"
+                onChange={this.handleChange}
+                type="text"
+                value={name} />
+            </div>
 
-          <div className="input-box">
-            <label htmlFor="email">E-mail</label>
-            <input
-              id="email"
-              name="email"
-              onChange={this.handleChange}
-              type="email"
-              value={email} />
-          </div>
+            <button type="submit">
+                Create
+            </button>
 
-          <div className="input-box">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              name="password"
-              onChange={this.handleChange}
-              type="password"
-              value={password} />
-          </div>
-
-          <button type="submit">
-              Register
-          </button>
-
-        </form>
+          </form>
+        
+        </div>
       </div>
     )
   }

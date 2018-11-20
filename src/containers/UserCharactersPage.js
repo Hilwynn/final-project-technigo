@@ -14,7 +14,6 @@ class UserCharactersPage extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log("JSON from the server!", json)
       this.setState({
         userInfo: json
       })
@@ -50,6 +49,7 @@ class UserCharactersPage extends Component {
               {userInfo.characters.map(character => (
                 <CharacterWidget
                   id={character._id}
+                  key={character._id}
                   name={character.name}
                   path="characters"
                   portrait={character.portrait} />

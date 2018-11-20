@@ -11,7 +11,6 @@ class CharacterDirectoryPage extends Component {
     fetch(`http://localhost:8081/characters`)
     .then(response => response.json())
     .then(json => {
-      console.log("JSON from the server!", json)
       this.setState({
         characters: json
       })
@@ -37,6 +36,7 @@ class CharacterDirectoryPage extends Component {
               {characters.map(character => (
                 <CharacterWidget
                   id={character._id}
+                  key={character._id}
                   name={character.name}
                   path="characters"
                   portrait={character.portrait} />

@@ -13,7 +13,6 @@ class UserProfile extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log("JSON from the server!", json)
       this.setState({
         userInfo: json
       })
@@ -33,9 +32,7 @@ class UserProfile extends Component {
     
     
     if (userInfo) {
-      
       const username = this.capitalize(userInfo.username)
-      console.log(userInfo.characters[0])
       
       return (
         <div className="wrapper">
