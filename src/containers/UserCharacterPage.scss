@@ -1,4 +1,5 @@
 @import "../colors.scss";
+@import "../mixins.scss";
 
 .info-line {
   justify-content: flex-end;
@@ -21,6 +22,7 @@
     border: 1px solid $gray;
     display: block;
     height: 200px;
+    object-fit: cover;
     width: 200px;
   }
 }
@@ -66,19 +68,71 @@
   }
 }
 
-.graph-gold,
-.graph-xp {
-  width: 50%;
+.spells-section {
+  h2 {
+    margin-bottom: 5px;
+  }
+  
+  .spells-search-toggle {
+    // border-bottom: 1px solid $gray;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 20px 5px;
+    width: 150px;
+    
+    .spells-toggle-alternative {
+      height: 20px;
+      padding: 0 10px;
+      
+      button {
+        background-color: transparent;
+        border: none;
+        color: $red;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 0 2.5px;
+        outline: none;
+        padding: 0 0 3px;
+        text-transform: uppercase;
+        
+        &:hover {
+          @include linkStyling(0 0 1.5px 0, $red)
+        }
+        
+        &:focus {
+          @include linkStyling(0 0 1.5px 0, $red)
+        }
+      }
+    }  
+  }
+  
+  .input-box {
+    width: 200px;
+    
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.party-section {
+  h2 {
+    margin-bottom: 0;
+  }
+  
+  h3 {
+    color: $red;
+    margin: 0 0 0 10px;
+    text-transform: uppercase;
+  }
 }
 
 .party-container {
   display: flex;
-  margin-top: 30px;
   width: 100%;
-  
-  .character-widget-container {
-    height: auto;
-    margin: 10px 10px 0 0;
-    width: 80px;
-  }
+}
+
+.spells-container {
+  display: flex;
+  flex-wrap: wrap;
 }

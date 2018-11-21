@@ -1,0 +1,161 @@
+@import "../colors.scss";
+
+.spell-card {
+  border-radius: 5px;
+  background-color: $red;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  height: 360px;
+  margin: 0 10px 10px 0;
+  padding: 10px 10px 5px;
+  width: 280px;
+  
+  .spell-inner {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+  
+  span {
+    font-weight: 700;
+  }
+}
+
+.spell-name,
+.spell-material {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  width: calc(100% - 4px);
+  
+  p {
+    margin: 0;
+  }
+}
+
+.spell-name {
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  font-weight: 700;
+  height: 28px;
+  justify-content: center;
+  margin: 2px;
+  text-transform: uppercase;
+}
+
+.spell-material {
+  background-color: $red;
+  color: #fff;
+  font-size: 12px;
+  margin: 0 2px;
+  
+  p {
+    margin-left: 5px;
+  }
+}
+
+.spell-casting-time,
+.spell-range,
+.spell-components,
+.spell-duration,
+.spell-concentration,
+.spell-ritual {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  font-size: 12px;
+  height: 28px;
+  margin: 2px;
+  padding: 2px;
+  
+  p {
+    margin: 0 0 0 3px;
+  }
+}
+
+.spell-duration {
+  width: calc(70% - 4px);
+}
+
+.spell-components,
+.spell-concentration {
+  width: calc(55% - 4px);
+}
+
+.spell-range,
+.spell-ritual {
+  width: calc(45% - 4px);
+}
+
+.spell-casting-time {
+  display: flex;
+  justify-content: center;
+  width: calc(30% - 4px);
+  
+  p {
+    margin: 0;
+  }
+}
+
+.spell-concentration,
+.spell-ritual {
+  text-transform: capitalize;
+}
+
+.spell-dynamic {
+  display: flex;
+  flex-direction: column;
+  height: 190px;
+  
+  .spell-material {
+    flex-basis: content;
+    min-height: 28px;
+  }
+  
+  .spell-description {
+    flex: 1;
+  }
+}
+
+.spell-footer {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  margin-top: 2px;
+  width: 100%;
+  
+  p {
+    margin: 0 0 0 5px;
+  }
+}
+
+.spell-page {
+  height: 20px;
+  width: 30%;
+}
+
+.spell-level-school {
+  display: flex;
+  height: 20px;
+  justify-content: flex-end;
+  width: 70%;
+  
+  p {
+    margin: 0 5px 0 0;
+  }
+}
+
+.spell-description {
+  background-color: #fff;
+  margin: 2px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 7.5px;
+  width: calc(100% - 4px);
+  
+  p:first-child {
+    margin-top: 0;
+  }
+}

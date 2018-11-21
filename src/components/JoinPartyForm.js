@@ -65,7 +65,7 @@ class JoinPartyForm extends Component {
   }
 
   handleSubmit = event => {
-    event.preventDefault()
+    
     const characterId = this.props.match.params.id
     const partyId = this.state.party
     const partyUrl = `http://localhost:8081/parties/${partyId}/add`
@@ -100,7 +100,7 @@ class JoinPartyForm extends Component {
               value={partyQuery} />
           </div>
           
-          {parties && (<ul>
+          {(parties && partyQuery !== "") && (<ul>
             {parties.map(party => (
               <SearchListItem
                 id={party._id}

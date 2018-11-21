@@ -5,6 +5,7 @@ class CharacterCreationPage extends Component {
   state = {
     name: "",
     race: "",
+    portrait: "",
     class: "",
     level: 0,
     background: "",
@@ -21,7 +22,6 @@ class CharacterCreationPage extends Component {
   }
   
   handleSubmit = (event) => {
-    event.preventDefault()
     const url = "http://localhost:8081/characters"
     fetch(url, {
       method: "POST",
@@ -30,7 +30,7 @@ class CharacterCreationPage extends Component {
         "Content-Type": "application/json",
         "accessToken": localStorage.getItem("token")
       }
-    })
+    }, () => this.props.history.push("/profile/characters"))
       .then(response => response.json())
       .catch(err => {
         console.log("Failed to create user", err)
@@ -42,6 +42,7 @@ class CharacterCreationPage extends Component {
     const { 
       name,
       race,
+      portrait,
       level,
       background,
       alignment,
@@ -80,6 +81,16 @@ class CharacterCreationPage extends Component {
                 onChange={this.handleChange}
                 type="text"
                 value={race} />
+            </div>
+            
+            <div className="input-box">
+              <label htmlFor="character-portrait">Portrait</label>
+              <input
+                id="character-portrait"
+                name="portrait"
+                onChange={this.handleChange}
+                type="text"
+                value={portrait} />
             </div>
 
             <div className="input-box">

@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 10px;
-  width: 100%;
   
   label {
     font-family: $main-font;
@@ -14,7 +13,6 @@
   input {
     height: 35px;
     padding: 5px 10px;
-    width: 100%;
     
     &:focus {
       outline-color: $red;
@@ -26,8 +24,6 @@ form button {
   background-color: $red;
   border: none;
   color: white;
-  cursor: pointer;
-  font-family: $main-font;
   font-size: 16px;
   height: 42px;
   margin-top: 20px;

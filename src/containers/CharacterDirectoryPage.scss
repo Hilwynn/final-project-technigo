@@ -1,11 +1,5 @@
 .all-characters-container {
   display: flex;
-  margin-top: 30px;
-  width: 100%;
-  
-  .character-widget-container {
-    height: auto;
-    margin: 10px 10px 0 0;
-    width: calc(20% - 10px);
-  }
+  flex-wrap: wrap;
+  margin: 30px auto 0;
 }

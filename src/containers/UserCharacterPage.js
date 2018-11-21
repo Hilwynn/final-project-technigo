@@ -1,19 +1,22 @@
 import React, { Component } from "react"
 import ProfileMenu from "../components/ProfileMenu"
 import CharacterWidget from "../components/CharacterWidget"
+import SpellCard from "../components/SpellCard"
 import JoinPartyForm from "../components/JoinPartyForm"
+import SpellSearchForms from "../components/SpellSearchForms"
 import "./UserCharacterPage.scss"
 
 class UserCharacterPage extends Component {
   state = {
     character: null,
+    characterSpells: null,
     party: null,
-    partyId: null
+    partyId: null,
+    spells: null,
+    spellSearchFilter: ""
   }
   
-  componentDidMount() {
-    const characterId = this.props.match.params.id
-    
+  handleCharacterFetch = (characterId) => {
     fetch(`http://localhost:8081/characters/${characterId}`)
       .then(response => response.json())
       .then(json => {
@@ -33,15 +36,45 @@ class UserCharacterPage extends Component {
           })
         }
         this.setState({
-          character: json
+          character: json,
+          characterSpells: json.spells
         })
-      })      
+      })
+      .catch(err => {
+        console.log("Error from the server!", err)
+      })
+  }
+  
+  handleSpellsFetch = () => {
+    fetch(`http://dnd5eapi.co/api/spells/`)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          spells: json.results
+        })
+      })
+      .catch(err => {
+        console.log("Error from the server!", err)
+      })
+  }
+  
+  componentDidMount() {
+    const characterId = this.props.match.params.id
+    this.handleCharacterFetch(characterId)
+    this.handleSpellsFetch()
   }
 
   render() {
-    const { character, party } = this.state
+    const { character, characterSpells, party, spells, spellSearchFilter } = this.state
     
     if (character) {
+      console.log(characterSpells)
+      if (this.state.spells) {
+        console.log(this.state.spells)
+        if (this.state.spellAddFilter) {
+          console.log(this.state.spellAddFilter)
+        }
+      }
 
       return (
         <main className="wrapper">
@@ -118,28 +151,6 @@ class UserCharacterPage extends Component {
               
             </section>
             
-            <section className="spells-section">
-              <h2>Spells</h2>
-              
-              <input type="text" placeholder="Search your spells" />
-              <input type="text" placeholder="Add spells" />  
-            
-            </section>
-            
-            {/*<section className="graphs-section">
-            
-              <div className="graph-xp">
-                <h2>Experience</h2>
-                {character.experience_points}
-              </div>
-              
-              <div className="graph-gold">
-                <h2>Gold</h2>
-                {character.gold}
-              </div>
-              
-            </section>*/}
-            
             <section className="party-section">
               <h2>Adventuring Party</h2>
               
@@ -153,7 +164,7 @@ class UserCharacterPage extends Component {
                           id={character._id}
                           key={character._id}
                           name={character.name}
-                          path="characters/"
+                          path="/characters"
                           portrait={character.portrait} />
                       ))}
                     </div>
@@ -163,7 +174,23 @@ class UserCharacterPage extends Component {
                 <JoinPartyForm />
               }
               
+            </section>
+            
+            <section className="spells-section">
+              <h2>Spells</h2>
               
+              <SpellSearchForms
+                characterSpells={characterSpells}
+                spells={spells}
+               />
+               
+               <div className="spells-container">
+                 {characterSpells.map(spell => (
+                   <SpellCard
+                     key={spell}
+                     spellUrl={spell} />
+                 ))}
+              </div>
               
             </section>
           
