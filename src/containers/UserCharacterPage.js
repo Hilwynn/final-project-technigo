@@ -58,6 +58,12 @@ class UserCharacterPage extends Component {
       })
   }
   
+  setFilter = (newState) => {
+    this.setState({
+      spellSearchFilter: newState
+    })
+  }
+  
   componentDidMount() {
     const characterId = this.props.match.params.id
     this.handleCharacterFetch(characterId)
@@ -65,7 +71,7 @@ class UserCharacterPage extends Component {
   }
 
   render() {
-    const { character, characterSpells, party, spells, spellSearchFilter } = this.state
+    const { character, characterSpells, party, spells } = this.state
     
     if (character) {
       console.log(characterSpells)
@@ -181,15 +187,17 @@ class UserCharacterPage extends Component {
               
               <SpellSearchForms
                 characterSpells={characterSpells}
+                setFilter={this.setFilter}
                 spells={spells}
                />
                
-               <div className="spells-container">
-                 {characterSpells.map(spell => (
-                   <SpellCard
-                     key={spell}
-                     spellUrl={spell} />
-                 ))}
+              <div className="spells-container">
+                {characterSpells.map(spell => (
+                  <SpellCard
+                   filter={this.state.spellSearchFilter}
+                   key={spell}
+                   spellUrl={spell} />
+                ))}
               </div>
               
             </section>

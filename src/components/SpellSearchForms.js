@@ -8,8 +8,7 @@ class SpellSearchForms extends Component {
     searchToggle: "search",
     spellAdd: "",
     spellAddFilter: null,
-    spellSearch: "",
-    spellSearchFilter: ""
+    spellSearch: ""
   }
   
   handleSearchToggle = (event) => {
@@ -51,18 +50,10 @@ class SpellSearchForms extends Component {
     })
   }
   
-  // handleSpellSearchChange = event => {
-  //   this.setState({
-  //     spellSearch: event.target.value
-  //   }, this.handleSpellSearchFilter())
-  // }
-  // 
-  // handleSpellSearchFilter = () => {
-  //   const spellSearchFilter = this.props.characterSpells.filter(spell => spell.name = this.state.spellSearch)
-  //   this.setState({
-  //     characterSpells: spellSearchFilter
-  //   })
-  // }
+  handleSpellSearchChange = event => {
+    const newState = event.target.value
+    this.props.setFilter(newState)
+  }
   
   handleSpellAddChange = event => {
     this.setState({
@@ -97,27 +88,16 @@ class SpellSearchForms extends Component {
         {searchToggle === "search" && (
             <div>
               <div className="input-box">
-                <label htmlFor="spellSearch">Search your spells</label>
+                <label htmlFor="spellSearchFilter">Search your spells</label>
                 <input
                   id="spell-search"
-                  name="spellSearch"
+                  name="spellSearchFilter"
                   onChange={this.handleSpellSearchChange}
                   placeholder="Search your spells"
                   type="text"
-                  value={spellSearch} />
+                  value={spellSearchFilter} />
                </div>
-            
-              {spellSearchFilter && (
-                <ul>
-                  {spellSearchFilter.map(spell => (
-                    <SearchListItem
-                      id={spell.url}
-                      key={spell.url}
-                      name={spell.name}
-                      handleSearchChoice={this.handleSearchChoice} />
-                  ))}      
-                </ul>
-              )}
+
             </div>
           )
         }
