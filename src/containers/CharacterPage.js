@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import CharacterWidget from "../components/CharacterWidget"
 import "./UserCharacterPage.scss"
+import "./CharacterPage.scss"
 
 class CharacterPage extends Component {
   state = {
@@ -41,7 +42,7 @@ class CharacterPage extends Component {
   
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
-      this.handleFetch(this.props.match.params.id)
+      this.handleCharacterFetch(this.props.match.params.id)
     }
   }
 
@@ -65,12 +66,21 @@ class CharacterPage extends Component {
               
               <div className="character-basics">
                 
-                <div className="info-line character-name">
+                <div className="info-line character-name-public">
                   <div>
                     <p>{character.name}</p>
                   </div>
                   <div className="character-label">
                     <h3>Character Name</h3>
+                  </div>
+                </div>
+                
+                <div className="info-line character-user">
+                  <div>
+                    <p>{character.user.username}</p>
+                  </div>
+                  <div className="character-label">
+                    <h3>Player Name</h3>
                   </div>
                 </div>
                 
@@ -123,25 +133,6 @@ class CharacterPage extends Component {
               
             </section>
             
-            <section className="spells-section">
-              <h2>Spells</h2>
-            
-            </section>
-            
-            {/*<section className="graphs-section">
-            
-              <div className="graph-xp">
-                <h2>Experience</h2>
-                {character.experience_points}
-              </div>
-              
-              <div className="graph-gold">
-                <h2>Gold</h2>
-                {character.gold}
-              </div>
-              
-            </section>*/}
-            
             <section className="party-section">
               <h2>Adventuring Party</h2>
               
@@ -181,7 +172,6 @@ class CharacterPage extends Component {
         </div>
       )
     }
-    
 
   }
 }

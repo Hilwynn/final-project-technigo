@@ -23,11 +23,14 @@ class SpellCard extends React.Component {
   render() {
     const { spell } = this.state
     const apostropheReplace = /â€™/gi
+    const spaceReplace = /â€œ|â€�/gi
+    const dashReplace = /â€“/gi
     const regEx = new RegExp(this.props.filter, "ig")
-    console.log(spell)
     
     if (spell) {
-      if (this.props.filter !== "" && spell.name.match(regEx)) {
+      const descriptionString = spell.desc.join()
+      
+      if (this.props.filter !== "" && (spell.name.match(regEx) || descriptionString.match(regEx))) {
         return (
           <div className="spell-card">
             <div className="spell-inner">
@@ -37,7 +40,6 @@ class SpellCard extends React.Component {
                 <p><span>Components:</span> 
                 {spell.components.map(component => {
                   const indexOfComponent = spell.components.indexOf(component)
-                  console.log(indexOfComponent)
                   let string = ""
                   if (indexOfComponent >= (spell.components.length - 1)) {
                     string = ` ${component}`
@@ -56,11 +58,11 @@ class SpellCard extends React.Component {
               <div className="spell-casting-time"><p>{spell.casting_time}</p></div>
               <div className="spell-dynamic">
                 {spell.material ? (
-                  <div className="spell-material"><p>{spell.material}</p></div>
+                  <div className="spell-material"><p>{spell.material.replace(apostropheReplace, "'")}</p></div>
                 ) : null }
                 <div className="spell-description">
                   {spell.desc.map(desc => {
-                    const replaced = desc.replace(apostropheReplace, "'")
+                    const replaced = desc.replace(apostropheReplace, "'").replace(spaceReplace, "").replace(dashReplace, "–")
                     return <p>{replaced}</p>
                   }
                   )}
@@ -87,7 +89,6 @@ class SpellCard extends React.Component {
                 <p><span>Components:</span> 
                 {spell.components.map(component => {
                   const indexOfComponent = spell.components.indexOf(component)
-                  console.log(indexOfComponent)
                   let string = ""
                   if (indexOfComponent >= (spell.components.length - 1)) {
                     string = ` ${component}`
@@ -106,11 +107,11 @@ class SpellCard extends React.Component {
               <div className="spell-casting-time"><p>{spell.casting_time}</p></div>
               <div className="spell-dynamic">
                 {spell.material ? (
-                  <div className="spell-material"><p>{spell.material}</p></div>
+                  <div className="spell-material"><p>{spell.material.replace(apostropheReplace, "'")}</p></div>
                 ) : null }
                 <div className="spell-description">
                   {spell.desc.map(desc => {
-                    const replaced = desc.replace(apostropheReplace, "'")
+                    const replaced = desc.replace(apostropheReplace, "'").replace(spaceReplace, "").replace(dashReplace, "–")
                     return <p>{replaced}</p>
                   }
                   )}

@@ -28,7 +28,6 @@ class UserCharacterPage extends Component {
             fetch(`http://localhost:8081/parties/${partyId}`)
               .then(response => response.json())
               .then(json => {
-                console.log(json)
                 this.setState({
                   party: json
                 })
@@ -58,6 +57,12 @@ class UserCharacterPage extends Component {
       })
   }
   
+  clearSearchField = () => {
+    this.setState({
+      spellSearchFilter: ""
+    })
+  }
+  
   setFilter = (newState) => {
     this.setState({
       spellSearchFilter: newState
@@ -74,13 +79,6 @@ class UserCharacterPage extends Component {
     const { character, characterSpells, party, spells } = this.state
     
     if (character) {
-      console.log(characterSpells)
-      if (this.state.spells) {
-        console.log(this.state.spells)
-        if (this.state.spellAddFilter) {
-          console.log(this.state.spellAddFilter)
-        }
-      }
 
       return (
         <main className="wrapper">
@@ -187,6 +185,8 @@ class UserCharacterPage extends Component {
               
               <SpellSearchForms
                 characterSpells={characterSpells}
+                clearSearchField={this.clearSearchField}
+                handleCharacterFetch={this.handleCharacterFetch}
                 setFilter={this.setFilter}
                 spells={spells}
                />

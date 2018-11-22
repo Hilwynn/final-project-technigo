@@ -43,6 +43,7 @@ class UserProfile extends Component {
           
           <div className="inner-wrapper">
           <h1>Hello, {username}!</h1>
+          
           <p>Your registered e-mail address is: {userInfo.email}.</p>
           </div>
         

@@ -22,17 +22,11 @@ class UserCharactersPage extends Component {
       console.log("Error from the server!", err)
     })
   }
-  
-  capitalize = inputString => {
-    const string = String(inputString)
-    return string.charAt(0).toUpperCase() + string.slice(1)
-  }
 
   render() {
     const { userInfo } = this.state
     
     if (userInfo) {
-      const username = this.capitalize(userInfo.username)
       
       return (
         <div className="wrapper">
@@ -43,7 +37,7 @@ class UserCharactersPage extends Component {
           
           <div className="inner-wrapper">
             
-            <h1>{username}&apos;s Characters</h1>
+            <h1>Your Characters</h1>
           
             <div className="user-characters-container">
               {userInfo.characters.map(character => (

@@ -1,9 +1,11 @@
 import React, { Component } from "react"
 import { withRouter } from "react-router-dom"
 import SearchListItem from "../components/SearchListItem"
+import "./JoinPartyForm.scss"
 
 class JoinPartyForm extends Component {
   state = {
+    focus: false,
     parties: null,
     party: null,
     partyQuery: "",
@@ -65,7 +67,6 @@ class JoinPartyForm extends Component {
   }
 
   handleSubmit = event => {
-    
     const characterId = this.props.match.params.id
     const partyId = this.state.party
     const partyUrl = `http://localhost:8081/parties/${partyId}/add`
@@ -82,33 +83,46 @@ class JoinPartyForm extends Component {
       partyQuery: partyName
     })
   }
+  
+  handleFocus = () => {
+    this.setState({
+      focus: true
+    })
+  }
+  
+  // handleBlur = () => {
+  //   this.setState({
+  //     focus: false
+  //   })
+  // }
 
   render() {
-    const { partyQuery, parties } = this.state
+    const { focus, partyQuery, parties } = this.state
     return (
       <div className="join-party-container">
 
         <form onSubmit={this.handleSubmit}>
 
-          <div className="input-box">
+          <div className="input-box small-input">
             <label htmlFor="partyQuery">Choose a party</label>
             <input
               id="partyQuery"
               name="partyQuery"
               onChange={this.handleChange}
+              onFocus={this.handleFocus}
               type="text"
               value={partyQuery} />
-          </div>
-          
-          {(parties && partyQuery !== "") && (<ul>
-            {parties.map(party => (
-              <SearchListItem
-                id={party._id}
-                key={party._id}
-                name={party.name}
-                handleSearchChoice={this.handleSearchChoice} />
+              
+            {(parties && (partyQuery !== "" && " ") && focus) && (<ul className="search-result-list">
+              {parties.map(party => (
+                <SearchListItem
+                  id={party._id}
+                  key={party._id}
+                  name={party.name}
+                  handleSearchChoice={this.handleSearchChoice} />
                   ))}      
-          </ul>)}
+            </ul>)}
+          </div>
           
           <button type="submit">
               Join

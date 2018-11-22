@@ -33,3 +33,23 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .profile-navbar {    
+    ul {
+      flex-direction: column;
+      
+      li {
+        justify-content: center;
+        display: flex;
+        padding: 10px 0;
+        
+        a {
+          border: 1.5px solid transparent;
+          padding: 3px 0;
+          text-shadow: 1px 1px 1px $gray;
+        }
+      }
+    }
+  }
+}

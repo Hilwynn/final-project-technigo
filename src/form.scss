@@ -2,36 +2,69 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 10px;
+  position: relative;
+  width: 50%;
   
   label {
     font-family: $main-font;
+    font-weight: 700;
     height: auto;
     margin: 0 0 3px 5px;
+    text-transform: uppercase;
     width: 100%;
   }
   
   input {
     height: 35px;
     padding: 5px 10px;
-    
-    &:focus {
-      outline-color: $red;
-    }
+    width: 100%;
+    z-index: 2;
+  }
+  
+  input:focus {
+    outline-color: $red;
   }
 }
 
 form button {
   background-color: $red;
-  border: none;
+  border: 2px solid $red;
   color: white;
   font-size: 16px;
   height: 42px;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 110px;
   
   &:hover,
   &:focus {
     background-color: $black;
-    outline-color: $red;
+  }
+}
+
+.small-input {
+  width: 200px;
+  
+  input {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .input-box {
+    width: 50%;
+  }
+  
+  .small-input {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .input-box {
+    width: 100%;
+  }
+  
+  .small-input {
+    width: 200px;
   }
 }

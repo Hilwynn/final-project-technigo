@@ -47,13 +47,13 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 46px;
-  line-height: 48px;
+  font-size: 2.5rem;
+  line-height: 3rem;
 }
 
 h2 {
-  font-size: 34px;
-  line-height: 30px;
+  font-size: 2rem;
+  line-height: 2.4rem;
 }
 
 p {
@@ -68,10 +68,27 @@ button {
 .wrapper {
   margin: 0 auto;
   max-width: 1200px;
-  padding: 0 0 50px;
+  padding: 0 0 150px;
   width: 100%;
 }
 
 .inner-wrapper {
   padding: 0 20px;
+}
+
+.hidden {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+
+.text-padding {
+  background-color: rgba(0, 0, 0, .6);
+  color: #fff;
+  display: inline;
+  padding: 5px 7px;
+  box-decoration-break: clone;
 }

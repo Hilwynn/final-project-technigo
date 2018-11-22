@@ -3,7 +3,7 @@
 .character-widget-container {
   border: 1px solid $gray;
   height: 230px;
-  margin: 10px 10px 0 0;
+  margin: 10px 5px 0 5px;
   max-width: 180px;
   min-width: 120px;
   position: relative;
@@ -12,22 +12,21 @@
   .character-widget-image {
     display: block;
     height: 100%;
-    left: 0;
     object-fit: cover;
     width: 100%;
   }
   
   .character-widget-label {
     bottom: -7px;
+    line-height: 32px;
     right: 0;
     position: absolute;
     text-align: right;
   }
 }
 
-.text-padding {
-  background-color: rgba(0, 0, 0, .6);
-  color: #fff;
-  display: inline;
-  padding: 5px 7px;
+@media only screen and (max-width: 600px) {
+  .character-widget-container {
+    width: calc(50% - 10px);
+  }
 }

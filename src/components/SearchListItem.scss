@@ -1,0 +1,42 @@
+@import "../colors.scss";
+
+.search-result-list {
+  background-color: #fff;
+  border: 1px solid $gray;
+  border-top-width: 0;
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+  top: 19px;
+  width: 200px;
+  z-index: 1;
+  
+  li {
+    border-bottom: 1px solid $gray;
+    cursor: pointer;
+    outline: none;
+    padding: 7.5px;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    p {
+      margin: 0
+    }
+    
+    &:hover,
+    &:focus {
+      background-color: $red;
+      color: #fff;
+    }
+    
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  .search-result-list {
+    width: 100%;
+  }
+}

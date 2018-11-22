@@ -1,0 +1,47 @@
+@import "../colors.scss";
+
+.party-widget-link {
+  display: block;
+  padding: 0;
+}
+
+.party-widget-container {
+  border: 1px solid $gray;
+  height: 230px;
+  margin: 10px 5px 0 5px;
+  max-width: 180px;
+  min-width: 120px;
+  position: relative;
+  width: calc(20% - 10px);
+  
+  .party-widget-inner {
+    display: flex;
+    height: 100%;
+    
+    .party-widget-portrait {
+      height: 100%;
+      
+      .party-widget-image {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 50%;
+        width: 100%;
+      }
+    }
+    
+    .party-widget-label {
+      bottom: -7px;
+      line-height: 32px;
+      right: 0;
+      position: absolute;
+      text-align: right;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .party-widget-container {
+    width: calc(50% - 10px);
+  }
+}

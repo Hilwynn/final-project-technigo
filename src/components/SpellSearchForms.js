@@ -5,6 +5,7 @@ import SearchListItem from "../components/SearchListItem"
 class SpellSearchForms extends Component {
   state = {
     chosenSpell: null,
+    focus: false,
     searchToggle: "search",
     spellAdd: "",
     spellAddFilter: null,
@@ -62,14 +63,34 @@ class SpellSearchForms extends Component {
   }
   
   handleSpellAddSearch = () => {
-    const spellAddFilter = this.props.spells.filter(spell => spell.name.includes(this.state.spellAdd))
+    const regEx = new RegExp(this.state.spellAdd, "gi")
+    const spellAddFilter = this.props.spells.filter(spell => spell.name.match(regEx))
     this.setState({
       spellAddFilter
     })
   }
 
+  handleClear = () => {
+    this.props.clearSearchField()
+    this.setState({
+      spellSearchFilter: ""
+    })
+  }
+  
+  handleFocus = () => {
+    this.setState({
+      focus: true
+    })
+  }
+  
+  // handleBlur = () => {
+  //   this.setState({
+  //     focus: false
+  //   })
+  // }
+
   render() {
-    const { searchToggle, spellAdd, spellAddFilter, spellSearch, spellSearchFilter } = this.state
+    const { focus, searchToggle, spellAdd, spellAddFilter, spellSearchFilter } = this.state
     
     return (
       <div className="spells-search-field">
@@ -86,9 +107,9 @@ class SpellSearchForms extends Component {
         </div>
         
         {searchToggle === "search" && (
-            <div>
-              <div className="input-box">
-                <label htmlFor="spellSearchFilter">Search your spells</label>
+            <div className="toggledForm">
+              <div className="input-box small-input">
+                <label htmlFor="spellSearchFilter" className="hidden">Search your spells</label>
                 <input
                   id="spell-search"
                   name="spellSearchFilter"
@@ -97,34 +118,41 @@ class SpellSearchForms extends Component {
                   type="text"
                   value={spellSearchFilter} />
                </div>
+               
+               <button onClick={this.handleClear} onKeyPress={this.handleClear}>
+                   Clear
+               </button>
 
             </div>
           )
         }
         
         {searchToggle === "add" &&
-        (<form onSubmit={this.handleSubmit}>
+        (<form className="toggledForm" onSubmit={this.handleSubmit}>
 
-          <div className="input-box">
-            <label htmlFor="spellAdd">Add a spell</label>
+          <div className="input-box small-input">
+            <label htmlFor="spellAdd" className="hidden">Add a new spell</label>
             <input
               id="spell-add"
               name="spellAdd"
               onChange={this.handleSpellAddChange}
-              placeholder="Add spell"
+              onFocus={this.handleFocus}
+              placeholder="Add a new spell"
               type="text"
               value={spellAdd} />
+            
+              {(spellAddFilter && (spellAdd !== "" && " ") && focus) && (<ul className="search-result-list">
+                {spellAddFilter.slice(0, 5).map(spell => (
+                  <SearchListItem
+                    id={spell.url}
+                    key={spell.url}
+                    name={spell.name}
+                    handleSearchChoice={this.handleSearchChoice} />
+                ))}      
+              </ul>)}
           </div>
           
-          {(spellAddFilter && spellAdd !== "") && (<ul>
-            {spellAddFilter.map(spell => (
-              <SearchListItem
-                id={spell.url}
-                key={spell.url}
-                name={spell.name}
-                handleSearchChoice={this.handleSearchChoice} />
-                  ))}      
-          </ul>)}
+          
           
           <button type="submit">
               Add

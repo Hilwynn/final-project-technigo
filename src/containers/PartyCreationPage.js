@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ProfileMenu from "../components/ProfileMenu"
 
+
 class PartyCreationPage extends Component {
   state = {
     name: ""
@@ -12,7 +13,8 @@ class PartyCreationPage extends Component {
     })
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
+    event.preventDefault()
     const url = "http://localhost:8081/parties"
     fetch(url, {
       method: "POST",
@@ -23,6 +25,7 @@ class PartyCreationPage extends Component {
       }
     })
       .then(response => response.json())
+      .then(() => this.props.history.push("/profile/characters"))
       .catch(err => {
         console.log("Failed to create user", err)
       })
@@ -39,12 +42,12 @@ class PartyCreationPage extends Component {
       
         <div className="inner-wrapper">
       
-          <h1>Create New Party</h1>
+          <h1>Create Party</h1>
 
           <form onSubmit={this.handleSubmit}>
 
-            <div className="input-box">
-              <label htmlFor="name">Name</label>
+            <div className="input-box small-input">
+              <label htmlFor="name">Party Name</label>
               <input
                 id="name"
                 name="name"

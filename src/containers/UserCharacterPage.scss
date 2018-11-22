@@ -8,8 +8,7 @@
   height: 50px;
 }
 
-.information-section,
-.graphs-section {
+.information-section {
   display: flex;
   height: auto;
   width: 100%;
@@ -70,19 +69,38 @@
 
 .spells-section {
   h2 {
-    margin-bottom: 5px;
+    margin-bottom: 0;
+  }
+  
+  .spells-search-field {
+    margin: 5px 5px 20px;
+    
+    .toggledForm button {
+      background-color: $red;
+      border: 2px solid $red;
+      color: white;
+      font-size: 16px;
+      height: 42px;
+      margin: 0;
+      outline: none;
+      width: 110px;
+      
+      &:hover,
+      &:focus {
+        background-color: $black;
+      }  
+    }
   }
   
   .spells-search-toggle {
     // border-bottom: 1px solid $gray;
     display: flex;
-    justify-content: center;
-    margin: 0 0 20px 5px;
+    margin: 0 0 15px 5px;
     width: 150px;
     
     .spells-toggle-alternative {
       height: 20px;
-      padding: 0 10px;
+      padding: 0 10px 0 0;
       
       button {
         background-color: transparent;
@@ -92,26 +110,16 @@
         font-weight: 700;
         margin: 0 0 2.5px;
         outline: none;
-        padding: 0 0 3px;
+        padding: 0;
         text-transform: uppercase;
         
-        &:hover {
-          @include linkStyling(0 0 1.5px 0, $red)
-        }
-        
+        &:hover,
         &:focus {
           @include linkStyling(0 0 1.5px 0, $red)
+          padding: 0;
         }
       }
     }  
-  }
-  
-  .input-box {
-    width: 200px;
-    
-    input {
-      width: 100%;
-    }
   }
 }
 
@@ -129,10 +137,57 @@
 
 .party-container {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 }
 
 .spells-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 768px) {
+  .party-container {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .information-section {
+    img {
+      height: 230px;
+      width: 120px;
+    }
+    .character-basics {
+      margin-left: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .party-container {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .information-section {
+    flex-direction: column;
+    img {
+      height: 280px;
+      width: 280px;
+    }
+    .character-basics {
+      margin-left: 0;
+      margin-top: 10px;
+      
+      .character-name,
+      .character-class,
+      .character-background,
+      .character-race,
+      .character-alignment,
+      .character-xp {
+        width: 100%;
+      }
+    }
+  }
+  
 }

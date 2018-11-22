@@ -31,6 +31,8 @@ class CharacterDirectoryPage extends Component {
           <div className="character-hero" />
           
           <div className="inner-wrapper">
+          
+          <h1>Characters</h1>
 
             <div className="all-characters-container">
               {characters.map(character => (

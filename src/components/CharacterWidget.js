@@ -13,7 +13,7 @@ class CharacterWidget extends Component {
             src={this.props.portrait}
             alt={this.props.name}
             title={this.props.name} />
-          <p className="character-widget-label text-padding"><span>{this.props.name}</span></p>
+          <p className="character-widget-label"><span className="text-padding">{this.props.name}</span></p>
         </Link>
       </div>
     )

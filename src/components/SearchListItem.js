@@ -1,4 +1,5 @@
 import React from "react"
+import "./SearchListItem.scss"
 
 class SearchListItem extends React.Component {
   state = {
@@ -15,7 +16,7 @@ class SearchListItem extends React.Component {
 
   render() {
     return (
-      <li>
+      <li tabIndex={0}>
         <div onClick={this.handleChoice} onKeyPress={this.handleChoice}>
           <p>
             {this.props.name}

@@ -4,6 +4,7 @@ import "./App.scss"
 import PrivateRoute from "./PrivateRoute"
 import LandingPage from "./containers/LandingPage"
 import Header from "./containers/Header"
+import Footer from "./containers/Footer"
 import UserCharacterPage from "./containers/UserCharacterPage"
 import CharacterPage from "./containers/CharacterPage"
 import LoginPage from "./containers/LoginPage"
@@ -83,7 +84,7 @@ class App extends Component {
     }, () => { this.postUserCredentials() })
   }
 
-  logoutUser = () => {
+  logOutUser = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("userId")
     this.props.history.push("/")
@@ -111,7 +112,7 @@ class App extends Component {
       <div>
         <Header
           authorized={authorized}
-          logoutUser={this.logoutUser} />
+          logOutUser={this.logOutUser} />
         <Switch>
         
           <Route
@@ -169,6 +170,7 @@ class App extends Component {
           <PrivateRoute path="/profile/parties/create" component={PartyCreationPage} />
           
         </Switch>
+        <Footer />
       </div>
     )
   }

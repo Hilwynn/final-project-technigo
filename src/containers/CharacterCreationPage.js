@@ -7,7 +7,7 @@ class CharacterCreationPage extends Component {
     race: "",
     portrait: "",
     class: "",
-    level: 0,
+    level: 1,
     background: "",
     alignment: "",
     experience_points: 0,
@@ -22,6 +22,7 @@ class CharacterCreationPage extends Component {
   }
   
   handleSubmit = (event) => {
+    event.preventDefault()
     const url = "http://localhost:8081/characters"
     fetch(url, {
       method: "POST",
@@ -30,15 +31,15 @@ class CharacterCreationPage extends Component {
         "Content-Type": "application/json",
         "accessToken": localStorage.getItem("token")
       }
-    }, () => this.props.history.push("/profile/characters"))
+    })
       .then(response => response.json())
+      .then(() => this.props.history.push("/profile/characters"))
       .catch(err => {
         console.log("Failed to create user", err)
       })
   }
 
   render() {
-    console.log(this.state)
     const { 
       name,
       race,

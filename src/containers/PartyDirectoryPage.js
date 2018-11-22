@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import CharacterWidget from "../components/CharacterWidget"
+import PartyWidget from "../components/PartyWidget"
 
 class PartyDirectoryPage extends Component {
   state = {
@@ -35,11 +35,12 @@ class PartyDirectoryPage extends Component {
           
             <div className="all-characters-container">
               {parties.map(party => (
-                <CharacterWidget
+                <PartyWidget
                   id={party._id}
                   key={party._id}
+                  members={party.members}
                   name={party.name}
-                  path="characters/"
+                  path="parties"
                   portrait={party.portrait} />
                     ))}
             </div>

@@ -1,0 +1,12 @@
+.join-party-container {
+  .input-box {
+    z-index: 4;
+  }
+  input {
+    z-index: 3;
+  }
+  
+  .search-result-list {
+    top: 42px;
+  }
+}

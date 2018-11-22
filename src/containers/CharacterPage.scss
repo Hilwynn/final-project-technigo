@@ -1,0 +1,14 @@
+.character-name-public {
+  width: 70%
+}
+
+.character-user {
+  width: 30%;
+}
+
+@media only screen and (max-width: 600px) {
+  .character-name-public,
+  .character-user {
+    width: 100%;
+  }
+}

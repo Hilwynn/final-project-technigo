@@ -1,0 +1,15 @@
+@import "../colors.scss";
+
+.footer {
+  background-color: $red;
+  height: auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  
+  p {
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+  }
+}
